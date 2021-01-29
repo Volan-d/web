@@ -4,7 +4,21 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
 });
 
 $(function () {
+  $(".like").click(function () {
+    $(this).next("span").text(Number($(this).next("span").text())+1);
+  });
 
+  $(".dislike").click(function () {
+    $(this).prev("span").text(Number($(this).prev("span").text())-1);
+  });
+
+  var text = $('.hover-letter').text();
+  textArr = text.split('');
+  $('.hover-letter').html('');
+  $.each(textArr, function(i, v){
+    if(v == ' '){$('.hover-letter').append('<span class="space"> </span>')}
+    if(v == '~'){$('.hover-letter').append('<br>');} else {$('.hover-letter').append('<span style="color: rgb('+i*5+','+i*10+','+i*15+');">'+v+'</span>')}
+  })
 })
 
 
